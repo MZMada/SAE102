@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+bool isspace (char c){
+    return c == ' ' || c == '\t' || c == '\n';
+}
+
+size_t CompteurDeDoublonsV0(const string & str){
+
+    size_t Compt;
+    Compt = 0;
+
+    if (str.size() < 2){
+            Compt == 0;
+        }
+    for (size_t i = 1; i < str.size(); ++i){
+            if (!isspace(str[i]) && str[i] == str[i -1]) {
+                    Compt++;
+                }
+        }
+    return Compt;
+}
+
+
+size_t CompteurDeDoublonsV1(const string str){
+
+    size_t Compt(0), i(1);
+
+    if (str.size() < 2) return 0;
+    while (i < str.size()) {
+        if (!isspace(str[i]) && str[i] == str[i -1]) {
+            Compt = Compt +1;
+            i = i +1;
+        }
+        i = i + 1;
+    }
+    return Compt;
+}
+
+size_t CompteurDeDoublonsV2(const string str){
+
+    size_t Compt(0), i(1);
+
+    if (str.size() < 2) return 0;
+    while (i < str.size()) {
+        if ((str [i] == str [i-1] ||
+             (isspace (str[i]) && isspace (str [i-1])))) {
+            Compt = Compt +1;
+        }
+        i = i + 1;
+    }
+    return Compt;
+}
+
+size_t CompteurDeDoublonsV3(const string str){
+
+    size_t Compt(0), i (1);
+
+    if (str.size() < 2) return 0;
+
+    char carPrec (str [0]);
+
+    for (size_t i = 1; i < str.size(); ++i){
+        if (!isspace(str[i])) continue;
+        if (carPrec == str[i]) {
+            Compt++;
+        }
+        carPrec = str [i];
+    }
+    return Compt;
+}
+
+int main(){
+    cout << "saisir une chaine" << endl;
+    string ligne;
+    getline (cin, ligne);
+    cout << "nombre de doublons en V0 : " << CompteurDeDoublonsV0(ligne) << endl;
+    cout << "nombre de doublons en V1 : " << CompteurDeDoublonsV1(ligne) << endl;
+    cout << "nombre de doublons en V2 : " << CompteurDeDoublonsV2(ligne) << endl;
+    cout << "nombre de doublons en V3 : " << CompteurDeDoublonsV3(ligne) << endl;
+}
