@@ -1,0 +1,165 @@
+#include <iostream>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+
+void exo2(){
+    cout << "Bonjour!" << endl;
+}
+
+void exo3(){
+
+    for (int i=0; i<10;i ++){
+        cout << i << "\t";
+    }
+}
+
+void exo4(){
+
+    for (unsigned i=0; i<200;i ++){
+        cout << i << "\t";
+
+        if ((i+1) % 10 == 0){
+            cout << endl;
+        }
+    }
+    cout << endl;
+}
+
+void exo5(){
+    int Nombre;
+
+    cout << "Saisir un Nombre" << endl;
+    cin >> Nombre;
+
+    for (int i=0; i<Nombre;i ++){
+        cout << i << "\t";
+
+        if ((i+1) % 10 == 0){
+            cout << endl;
+        }
+    }
+    cout << endl;
+}
+
+void AffichNPremiersEntiersNat (const unsigned & N, const char & Sep){
+    for (unsigned i=0; i<N;i ++){
+        cout << i;
+
+        if (i != N -1){
+            cout << Sep;
+        }
+
+        if ((i+1) % 10 == 0){
+            cout << endl;
+        }
+    }
+    cout << endl;
+}
+
+void exo6(){
+    int N;
+    char Sep;
+
+    cout << "Saisir un Nombre N d'entier naturel" << endl;
+    cin >> N;
+    cout << "Saisir un Caractere de separation" << endl;
+    cin >> Sep;
+    AffichNPremiersEntiersNat(N,Sep);
+}
+
+void exo8(){
+    int a,b,c;
+    int deltat;
+    int x1;
+    int x2;
+    cout << "Saisir 3 coefficient pour calculer le polynome" << endl;
+    cout << "Saisir a" << endl;
+    cin >> a,b,c;
+    cout << "Saisir b" << endl;
+    cin >> b;
+    cout << "Saisir c" << endl;
+    cin >> c;
+
+    deltat = b*b-4*a*c;
+
+    cout << deltat << " est le disciminant" << endl;
+    if (deltat < 0){
+        cout << "Detla n'a pas de racine" << endl;
+    }
+    else if (deltat == 0){
+        x1 = b / (2*a) ;
+    cout << "La racine est : " << x1 << endl;
+    }
+    else{
+        x1 = (b - sqrt(deltat)) / 2*a;
+        x2 = (b + sqrt(deltat)) / 2*a;
+
+        cout << "Racine 1 x1 = " << x1 << endl;
+        cout << "Racine 2 x2 = " << x2 << endl;
+
+    }
+}
+
+void exo9(){
+    unsigned borneMin;
+    unsigned borneMax;
+    cout << "borne min : " << endl;
+    cin << borneMin;
+    cout << "borne max : " << endl;
+    cin << borneMax;
+    unsigned nbUtilisateur;
+    unsigned nbADeviner (borneMin + rand() % (borneMax-borneMin));
+    do{
+        cout << "entrer un nombre" << endl;
+        cin >> nbUtilisateur;
+        if (nbUtlisateur>){
+            cout << "Le chiffre est plus petit" << endl;
+        }
+        else if (nbADeviner>T){
+            cout << "Le chiffre est plus grand" << endl;
+        } while (nbADeviner=T){
+        cout << "Felicitation"<< endl;
+    }
+  }
+}
+
+void exo7(){
+    cout << "Sasir a quelle exercice vous voulez repondre ?" << endl;
+    char REP;
+    cin >> REP;
+    while ('q' !=REP) {
+        switch (REP) {
+        case '2':
+           exo2();
+            break;
+        case '3':
+            exo3();
+            break;
+        case '4':
+            exo4();
+            break;
+        case '5':
+            exo5();
+            break;
+        case '6':
+            exo6();
+            break;
+        case '8':
+            exo8();
+            break;
+        default:
+            cout << "valuer inconue" << endl;
+        }
+    cout << "Quel exercice vous voulez lancer ?";
+    cin >> REP;
+    }
+}
+
+int main()
+{
+    exo7();
+    return 0;
+}
